@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="pastel">
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Intentional</title>
+  <title>Dandelion</title>
   <link
     rel="icon"
     type="image/png"
@@ -12,40 +12,42 @@
     href="/imgs/favicon-32x32.png"
   />
   <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
-    crossorigin="anonymous"
-  />
-  <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
     crossorigin="anonymous"
   />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@2.31.0/dist/full.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="/css/style.css" />
   <script src="https://kit.fontawesome.com/854239efb5.js" crossorigin="anonymous"></script>
 </head>
-<body>
-  <header class="container d-flex flex-column">
-      <div class="container d-flex">
-        <div class="text-center col-11">
-          <h1 class=""><a href="/profile">Intentional</a></h1>
-          <span>An app that helps you make intentional decisions with your life</span>
-        </div>
-        <div class="text-right col-3 mt-2">
-            <h4 class="userName">Welcome <%= user.userName %></h4>
-            <a href="/logout" class="col-3 btn btn-primary">Logout</a>
+<body class="flex flex-col h-screen justify-between">
+  
+  <header>
+    <div class="navbar bg-base-100">
+      <div class="navbar-start">
+        <div class="dropdown">
+          <label tabindex="0" class="btn btn-ghost btn-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+          </label>
+          <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+            <li><a href="/dashboard"><span class>Home</span></a></li>
+            <li><a href="/todos"><span>To-Do List</span></a></li>
+            <li><a href="/feed"><span>Inspo Feed</span></a></li>
+            <li><a href="/moodboard"><span>Mood Board</span></a></li>
+          </ul>
         </div>
       </div>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="/profile"><span class>Home</span></a></li>
-          <li class="nav-item"> <a class="nav-link" href="/todos">To-Do List</a></li>
-          <li class="nav-item"> <a class="nav-link" href="/feed">Inspo Feed</a></li>
-          <li class="nav-item"> <a class="nav-link" href="#">Budget</a></li>
-        </ul>
-      </nav>
-    </header>
-  </body>
+      <div class="navbar-center">
+        <img src="/imgs/dandelion.png" class="h-20"
+        src="https://api.lorem.space/image?w=150&h=150">
+        <!-- <a class="normal-case text-xl">Dandelion</a> -->
+      </div>
+      <div class="navbar-end">
+        <a href="/logout" class="col-3 btn btn-primary">Logout</a>
+      </div>
+    </div>
+  </header>
+</body>
 </html>

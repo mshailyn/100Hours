@@ -5,19 +5,35 @@ const Todo = require('../models/Todo')
 
 
 module.exports = {
-  getProfile: async (req, res) => {
+  getDashboard: async (req, res) => {
     try {
       const posts = await Post.find({ user: req.user.id });
       const todoItems = await Todo.find({userId:req.user.id})
       const itemsLeft = await Todo.countDocuments({userId:req.user.id,completed: false})
-      res.render("profile.ejs", { posts: posts, user: req.user,todos: todoItems, left: itemsLeft });
+      res.render("dashboard.ejs", { posts: posts, user: req.user, todos: todoItems, left: itemsLeft });
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  getProfile: async (req, res) => {
+    try {
+      const posts = await Post.find({ user: req.user.id });
+      res.render("profile.ejs", { posts: posts, user: req.user});
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  getMoodboard: async (req, res) => {
+    try {
+      const posts = await Post.find({ user: req.user.id  });
+      res.render("moodboard.ejs", { posts: posts, user: req.user});
     } catch (err) {
       console.log(err);
     }
   },
   getFeed: async (req, res) => {
     try {
-      const posts = await Post.find().sort({ createdAt: "desc" }).lean();
+      const posts = await Post.find( user !== req.user.id).sort({ createdAt: "desc" }).lean();
       res.render("feed.ejs", { posts: posts, user: req.user });
     } catch (err) {
       console.log(err);
@@ -45,7 +61,7 @@ module.exports = {
         user: req.user.id,
       });
       console.log("Post has been added!");
-      res.redirect("/profile");
+      res.redirect("/dashboard");
     } catch (err) {
       console.log(err);
     }
@@ -73,9 +89,9 @@ module.exports = {
       // Delete post from db
       await Post.remove({ _id: req.params.id });
       console.log("Deleted Post");
-      res.redirect("/profile");
+      res.redirect("/dashboard");
     } catch (err) {
-      res.redirect("/profile");
+      res.redirect("/dashboard");
     }
   },
 };

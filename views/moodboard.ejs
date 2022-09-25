@@ -1,0 +1,22 @@
+<%- include('partials/header') -%>
+
+</div>
+<div class="">
+  <ul class="grid grid-cols-4 ml-5 mb-10">
+  <% for(var i=0; i<posts.length; i++) {%>
+    <li class="w-80">
+      <a href="/post/<%= posts[i]._id%>">
+        <img class="" src="<%= posts[i].image%>">
+      </a>
+    </li>
+  <% } %>
+  </ul>
+  <div class="m-5 flex justify-center">
+    <a class="btn btn-neutral" href="/feed">Return to Inspo Feed</a>
+  </div>  
+</div>  
+</div>
+</div>
+</div>
+
+<%- include('partials/footer') -%>
