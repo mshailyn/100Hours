@@ -1,11 +1,23 @@
 <%- include('partials/frontheader') -%>
 
-<main class="container">
-    <div class="row justify-content-around mt-5">
-        <a href="/login" class="col-3 btn btn-primary"> Login</a>
-        <a href="/signup" class="col-3 btn btn-primary"> Signup</a>
-    </div>
-</main>
+<div class="h-screen pb-14 bg-right bg-cover flex justify-end ml-10 pl-6 bg-cover" style="background-image:url('/imgs/bg.svg');">
+	<!--Main-->
+	<div class="container pt-24 md:pt-48 px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+		
+		<!--Left Col-->
+		<div class="flex flex-col items-center w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden ">
+            <h1 class="my-4 text-3xl md:text-5xl text-primary-content font-bold leading-tight text-center md:text-left slide-in-bottom-h1 items-center"><img src="/imgs/dandelion.gif"></h1>
+			<p class="leading-normal text-primary-content md:text-2xl mb-8 text-center md:text-left slide-in-bottom-subtitle">A new way to imagine your life</p>
+		</div>
+		
+		<!--Right Col-->
+		<div class="flex justify-center w-2/5 xl:w-2/5 pl-6 overflow-y-hidden">
+			<a href="/login" class="ml-10 lg:mr-0 slide-in-bottom btn btn-neutral"> Login</a>
+			<a href="/signup" class="ml-10 lg:mr-0 slide-in-bottom btn btn-neutral"> Signup</a>
+		</div>	
+	</div>
+</div>
+
     
 
 <%- include('partials/footer') -%>

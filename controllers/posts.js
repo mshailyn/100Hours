@@ -33,7 +33,7 @@ module.exports = {
   },
   getFeed: async (req, res) => {
     try {
-      const posts = await Post.find( user !== req.user.id).sort({ createdAt: "desc" }).lean();
+      const posts = await Post.find().sort({ createdAt: "desc" });
       res.render("feed.ejs", { posts: posts, user: req.user });
     } catch (err) {
       console.log(err);
@@ -76,6 +76,26 @@ module.exports = {
       );
       console.log("Likes +1");
       res.redirect(`/post/${req.params.id}`);
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  savePost: async (req, res) => {
+    try {
+      // Find post by id
+      let post = await Post.findById({ _id: req.params.id });
+      // Upload image to cloudinary
+      // const result = await cloudinary.uploader.upload(req.file.path);
+      await Post.create({
+        title: post.title,
+        image: post.image,
+        cloudinaryId: post.cloudinaryId,
+        caption: post.caption,
+        likes: 0,
+        user: req.user.id,
+      });
+      console.log("Post has been added!");
+      res.redirect("/moodboard");
     } catch (err) {
       console.log(err);
     }
