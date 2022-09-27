@@ -1,39 +1,44 @@
 <%- include('partials/header') -%>
 
-<main>
-    <section class="card">
-        <section>
-            <h1>To-Dos</h1>
-            <h2><%= user.userName %> has <%= left %> things left to do.</h2>
-            <span class="notice">Click the task to mark complete and incomplete.</span>
-            <ul>
-                <% todos.forEach( el => { %>
-                        <li class='todoItem' data-id='<%=el._id%>'>
-                            <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                            <span><%=el.date%></span>
-                            <span><%=el.time%></span>
-                            <button class="del fa-solid fa-trash-can"></button>
-                            <button class="update fa-regular fa-pen-to-square"></button>
-                        </li>
-                <% }) %>    
-             </ul>
-        </section>
-        <section class="bottom">
-            <h2 id="create">Create a New To-Do:</h2>
-            <form class="input-group container d-flex align-items-center" action="/todos/createTodo" method='POST'>
-                <div>
-                    <input type="text" placeholder="Enter Todo Item" name='todoItem'>
+<main class="flex justify-center h-screen w-screen items-center bg-auto bg-repeat bg-center animate-ltr-linear-infinite" style="background-image: url(/imgs/dandelionBackground2.png)">
+    <div class="card lg:card-side shadow-xl">
+        <!-- To-Do List -->
+        <figure class="bg-secondary text-secondary-content">
+            <div class="card-body items-center text-center">
+                <h2 class="card-title font-bold">To-Dos</h2>
+                <h3><%= user.userName %> has <%= left %> things left to do.</h3>
+                <span class="notice">Click the task to mark complete and incomplete.</span>
+                  <ul>
+                      <% todos.forEach( el => { %>
+                              <li class='todoItem' data-id='<%=el._id%>'>
+                                  <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+                                  <span><%=el.date%></span>
+                                  <span><%=el.time%></span>
+                                  <button class="del fa-solid fa-trash-can"></button>
+                                  <button class="update fa-regular fa-pen-to-square"></button>
+                              </li>
+                      <% }) %>    
+                   </ul>
+              </div>
+        </figure>
+
+        <!-- Add To-Do Form -->
+        <div class="card-body flex flex-col items-center justify-center bg-secondary-content text-secondary-focus">
+            <h2 class="card-title text-secondary font-bold" id="create">Create a New To-Do:</h2>
+            <form class="flex flex-col items-center justify-around" action="/todos/createTodo" method='POST'>
+                <div class="form-control my-5">
+                    <input type="text" placeholder="Enter Todo Item" name='todoItem' class="input input-bordered w-full max-w-xs h-10">
                 </div>
-                <div>
-                    <input type="date" placeholeer="Enter date" name ='date'> 
-                    <input type="time" placeholder="Enter time" name="time">
+                <div class=" my-5 w-full input-group">
+                    <input type="date" placeholeer="Enter date" name ='date' class="input input-bordered "> 
+                    <input type="time" placeholder="Enter time" name="time" class="input input-bordered ">
                 </div>
-                <div> <input type="submit" class="submit"> </div>
+                <input type="submit" class="submit btn btn-secondary bg-pink round my-5"> </div>
             </form>
-        </section>    
-    </section>
+        </div>
+    </div>
 </main>
 
-    <script src="js/main.js"></script>
+<script src="js/main.js"></script>
 
 <%- include('partials/footer') -%>

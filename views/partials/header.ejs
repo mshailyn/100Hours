@@ -18,18 +18,46 @@
     crossorigin="anonymous"
   />
   <link href="https://cdn.jsdelivr.net/npm/daisyui@2.31.0/dist/full.css" rel="stylesheet" type="text/css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            pink: '#EFCDD1',
+            darkpink: '#DB828C',
+          },
+          fontFamily: {
+        'quicksand': ['"Quicksand"', 'cursive'],
+          },
+          // Define animation class
+          animation: {
+            'ltr-linear-infinite': 'move-bg 40s linear infinite',
+          },
+          // Define keyframes
+          keyframes: {
+            'move-bg': {
+              '0%':   { 'background-position': '0 0' },
+              '100%': { 'background-position': '2000px 0'}
+            }
+          }
+        }
+      }
+    }
+  </script>
   <link rel="stylesheet" href="/css/style.css" />
   <script src="https://kit.fontawesome.com/854239efb5.js" crossorigin="anonymous"></script>
 </head>
-<body class="flex flex-col h-screen justify-between">
+<body class="flex flex-col h-screen justify-between font-quicksand">
   
   <header>
     <div class="navbar bg-base-100">
       <div class="navbar-start">
         <div class="dropdown">
           <label tabindex="0" class="btn btn-ghost btn-circle">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
           </label>
           <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
             <li><a href="/dashboard"><span class>Home</span></a></li>
@@ -40,8 +68,7 @@
         </div>
       </div>
       <div class="navbar-center">
-        <img src="/imgs/dandelion.png" class="h-20"
-        src="https://api.lorem.space/image?w=150&h=150">
+        <img src="/imgs/dandelion.png" class="h-24">
         <!-- <a class="normal-case text-xl">Dandelion</a> -->
       </div>
       <div class="navbar-end">
