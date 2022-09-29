@@ -11,9 +11,9 @@
                   <ul>
                       <% todos.forEach( el => { %>
                               <li class='todoItem' data-id='<%=el._id%>'>
-                                  <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                                  <span><%=el.date%></span>
-                                  <span><%=el.time%></span>
+                                  <span class='font-bold <%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+                                  <span>due on <%= moment(el.date).format('MMM do') %></span>
+                                  <span>@ <%= moment(el.time, "HH:mm:ss").format("h:mm A") %></span>
                                   <button class="del fa-solid fa-trash-can"></button>
                                   <button class="update fa-regular fa-pen-to-square"></button>
                               </li>

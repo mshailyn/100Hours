@@ -1,7 +1,7 @@
 const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
 const Todo = require('../models/Todo')
-
+const moment = require('moment');
 
 
 module.exports = {
@@ -10,7 +10,9 @@ module.exports = {
       const posts = await Post.find({ user: req.user.id });
       const todoItems = await Todo.find({userId:req.user.id})
       const itemsLeft = await Todo.countDocuments({userId:req.user.id,completed: false})
-      res.render("dashboard.ejs", { posts: posts, user: req.user, todos: todoItems, left: itemsLeft });
+      const response = await fetch(process.env.URL);
+      const quotes = await response.json()
+      res.render("dashboard.ejs", { posts: posts, user: req.user, todos: todoItems, left: itemsLeft, moment: moment, quote: quotes });
     } catch (err) {
       console.log(err);
     }
