@@ -4,16 +4,17 @@ const moment = require('moment');
 module.exports = {
     getTodos: async (req,res)=>{
         try{
-            const todoItems = await Todo.find({userId:req.user.id})
+            const todoItems = await Todo.find({userId:req.user.id}).sort({priority: 'asc'})
             const itemsLeft = await Todo.countDocuments({userId:req.user.id,completed: false})
-            res.render('todos.ejs', {todos: todoItems, left: itemsLeft, user: req.user, moment: moment })
+            const overdue = await Todo.find({ userId:req.user.id, date: { $lte: moment().subtract(1, 'days').format("YYYY-MM-DD") } })
+            res.render('todos.ejs', {todos: todoItems, left: itemsLeft, user: req.user, overdue: overdue, moment: moment })
         }catch(err){
             console.log(err)
         }
     },
     createTodo: async (req, res)=>{
         try{
-            await Todo.create({todo: req.body.todoItem, date: req.body.date, time: req.body.time, completed: false, userId: req.user.id}) // re-adding date/time
+            await Todo.create({todo: req.body.todoItem, date: req.body.date, time: req.body.time, priority:req.body.priority, completed: false, userId: req.user.id}) // re-adding date/time
             console.log('Todo has been added!')
             res.redirect('/todos')
         }catch(err){

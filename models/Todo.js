@@ -13,6 +13,10 @@ const TodoSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  priority: {
+    type: String,
+    required: true,
+  },
   completed: {
     type: Boolean,
     required: true,

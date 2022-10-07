@@ -10,9 +10,11 @@ module.exports = {
       const posts = await Post.find({ user: req.user.id });
       const todoItems = await Todo.find({userId:req.user.id})
       const itemsLeft = await Todo.countDocuments({userId:req.user.id,completed: false})
+      const todoToday = await Todo.find({ userId:req.user.id, date: moment().subtract(1, 'days').format("YYYY-MM-DD") })
+      const overdue = await Todo.find({ userId:req.user.id, date: { $lte: moment().subtract(1, 'days').format("YYYY-MM-DD") } })
       const response = await fetch(process.env.URL);
       const quotes = await response.json()
-      res.render("dashboard.ejs", { posts: posts, user: req.user, todos: todoItems, left: itemsLeft, moment: moment, quote: quotes });
+      res.render("dashboard.ejs", { posts: posts, user: req.user, todos: todoItems, left: itemsLeft,todoToday: todoToday, overdue: overdue, moment: moment, quote: quotes });
     } catch (err) {
       console.log(err);
     }

@@ -6,16 +6,16 @@
         <figure class="bg-secondary text-secondary-content">
             <div class="card-body items-center text-center">
                 <h2 class="card-title font-bold">To-Dos</h2>
-                <h3><%= user.userName %> has <%= left %> things left to do.</h3>
+                <h3>You have <%= left %> things left to do.</h3>
                 <span class="notice">Click the task to mark complete and incomplete.</span>
                   <ul>
                       <% todos.forEach( el => { %>
                               <li class='todoItem' data-id='<%=el._id%>'>
                                   <span class='font-bold <%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                                  <span>due on <%= moment(el.date).format('MMM do') %></span>
+                                  <span>due on <%= moment(el.date).format("MMM Do") %></span>
                                   <span>@ <%= moment(el.time, "HH:mm:ss").format("h:mm A") %></span>
-                                  <button class="del fa-solid fa-trash-can"></button>
-                                  <button class="update fa-regular fa-pen-to-square"></button>
+                                  <button class="del fa-solid fa-trash-can hover:text-base-100"></button>
+                                  <button class="update fa-regular fa-pen-to-square hover:text-base-100"></button>
                               </li>
                       <% }) %>    
                    </ul>
@@ -32,6 +32,14 @@
                 <div class=" my-5 w-full input-group">
                     <input type="date" placeholeer="Enter date" name ='date' class="input input-bordered "> 
                     <input type="time" placeholder="Enter time" name="time" class="input input-bordered ">
+                </div>
+                <div class="flex flex-col">
+                    <label for="priority" class="font-bold"> Select task Priority:</label>
+                    <select id="priority" name="priority" size="3" class="text-center items-center mt-3">
+                        <option value="1">High</option>
+                        <option value="2">Moderate</option>
+                        <option value="3">Low</option>
+                    </select>
                 </div>
                 <input type="submit" class="submit btn btn-secondary bg-pink round my-5"> </div>
             </form>

@@ -1,22 +1,46 @@
 <%- include('partials/header') -%>
 
-<div class="grid grid-cols-4 gap-4 ml-5 mt-10 mb-10">
+<div class="grid grid-cols-4 gap-2 ml-5 mt-10 mb-10">
 <!-- To-Do List for Today -->
   <div class="card w-72 bg-secondary text-secondary-content shadow-xl">
     <div class="flex flex-column justify-center card-body items-center text-center">
       <h2 class="card-title">To-Dos</h2>
-      <h3> You have <%= left %> things left to do today and things are overdue</h2>
-        <span class="">Click the task to mark complete and incomplete.</span>
+      <h3> You have <%= todoToday.length %> 
+        <% if(todoToday.length === 1){ %>
+          thing
+          <% }else{ %>
+          things
+          <% } %>   
+        left to do today and <%= overdue.length %> 
+        <% if(overdue.length === 1){ %>
+        thing is
+        <% }else{ %>
+        things are
+        <% } %>
+         overdue</h2>
+        <span class="text-xs">Click the task to mark complete and incomplete.</span>
         <ul>
-            <% todos.forEach( el => { %>
+            <% todoToday.forEach( el => { %>
                     <li class='todoItem' data-id='<%=el._id%>'>
                         <span class='font-bold <%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
-                        <span>due on <%= moment(el.date).format('MMM do') %></span>
+                        <span>due on <%= moment(el.date).format("MMM Do") %></span>
                         <span>@ <%= moment(el.time, "HH:mm:ss").format("h:mm A") %></span>
                         <button class="fa-solid fa-trash-can del hover:text-base-100"></button>
                         <button class="fa-regular fa-pen-to-square update hover:text-base-100"></button>
                     </li>
             <% }) %>    
+         </ul>
+         <h5 class="font-bold text-primary-content">Overdue</h5>
+         <ul>
+          <% overdue.forEach( el => { %>
+            <li class='todoItem text-primary-content' data-id='<%=el._id%>'>
+                <span class='font-bold <%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+                <span>due on <%= moment(el.date).format("MMM Do") %></span>
+                <span>@ <%= moment(el.time, "HH:mm:ss").format("h:mm A") %></span>
+                <button class="fa-solid fa-trash-can del hover:text-base-100"></button>
+                <button class="fa-regular fa-pen-to-square update hover:text-base-100"></button>
+            </li>
+    <% }) %> 
          </ul>
         <div class="card-actions mt-8">
             <a class="btn btn-neutral" href="/todos">All-Todos</a>
@@ -155,5 +179,5 @@
   </div>  
 </div>  
     
-
+<script src="js/main.js"></script>
 <%- include('partials/footer') -%>
