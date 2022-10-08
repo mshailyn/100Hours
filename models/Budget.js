@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const BudgetSchema = new mongoose.Schema({
   monthBudget: {
-    type: Number,
+    type: String,
     required: true,
   },
   date: { 
