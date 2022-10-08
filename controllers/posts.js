@@ -22,7 +22,7 @@ module.exports = {
   getProfile: async (req, res) => {
     try {
       const posts = await Post.find({ user: req.user.id });
-      res.render("profile.ejs", { posts: posts, user: req.user});
+      res.render("profile.ejs", { posts: posts, user: req.user, moment: moment});
     } catch (err) {
       console.log(err);
     }
@@ -30,7 +30,7 @@ module.exports = {
   getMoodboard: async (req, res) => {
     try {
       const posts = await Post.find({ user: req.user.id  });
-      res.render("moodboard.ejs", { posts: posts, user: req.user});
+      res.render("moodboard.ejs", { posts: posts, user: req.user, moment: moment});
     } catch (err) {
       console.log(err);
     }
@@ -38,7 +38,7 @@ module.exports = {
   getFeed: async (req, res) => {
     try {
       const posts = await Post.find().sort({ createdAt: "desc" });
-      res.render("feed.ejs", { posts: posts, user: req.user });
+      res.render("feed.ejs", { posts: posts, user: req.user, moment: moment});
     } catch (err) {
       console.log(err);
     }
@@ -46,7 +46,7 @@ module.exports = {
   getPost: async (req, res) => {
     try {
       const post = await Post.findById(req.params.id);
-      res.render("post.ejs", { post: post, user: req.user });
+      res.render("post.ejs", { post: post, user: req.user, moment: moment });
     } catch (err) {
       console.log(err);
     }
@@ -88,8 +88,6 @@ module.exports = {
     try {
       // Find post by id
       let post = await Post.findById({ _id: req.params.id });
-      // Upload image to cloudinary
-      // const result = await cloudinary.uploader.upload(req.file.path);
       await Post.create({
         title: post.title,
         image: post.image,

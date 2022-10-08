@@ -1,0 +1,89 @@
+<%- include('partials/header') -%>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<main class="flex flex-col justify-around w-screen h-screen items-center bg-auto bg-repeat bg-center animate-ltr-linear-infinite" style="background-image: url(/imgs/dandelionBackground2.png)">
+
+  <% if(!budget){ %> 
+    <div class="card w-96 bg-secondary text-secondary-content shadow-xl p-5 my-10">
+      <div class="flex flex-column justify-center card-body items-center text-center">
+        <h2 class="card-title">You have not made a budget for <%= moment(reqDate).format("MMMM YYYY")%>. Click below to build your budget.</h2>
+        <div class="card-actions mt-8">
+          <a class="btn btn-neutral" href="/budget/makeBudget">Make a New Budget</a>
+        </div>
+      </div>
+    </div>
+  <% }else { %> 
+    <div class="card w-4/5 md:w-1/2 bg-secondary text-secondary-content shadow-xl p-5 my-10">
+      <div class="flex flex-column justify-center card-body items-center text-center">
+        <h2 class="card-title">Your Budget for <%= moment(budget.date).format("MMMM YYYY")%></h2>
+        <span> You have $<%= left %> left this month from your budget.</span>
+        <div class="card-body w-96">
+          <canvas id="myChart"></canvas>
+        </div>
+        <div class="card-actions mt-8">
+            <a class="btn btn-neutral" href="/budget/makeBudget">Make a New Budget</a>
+        </div>
+      </div>
+    </div>
+  <% } %>
+ 
+</main>
+
+<script>
+    let budget = <%- JSON.stringify(budget) %>
+    console.log(budget.rent)
+
+    const labels = [
+    'Rent',
+    'Utilities',
+    'Car',
+    'Gas',
+    'Food',
+    'Debt',
+    'Subscriptions',
+    'Savings',
+    ]
+  
+    const data = {
+      labels: labels,
+      color: '#fff',
+      datasets: [{
+        label: 'My First dataset',
+        backgroundColor: [
+        'rgb(206	194	213)',
+        'rgb(168	144	180)',
+        'rgb(48	19	63)',
+        'rgb(191	231	215)',
+        'rgb(141	213	181)',
+        'rgb(33	81	54)',
+        'rgb(13	41	59)',
+        'rgb(125	170	196)',
+        ],
+        color: '#fff',
+        data: [ budget.rent, budget.utilities, budget.car, budget.gas, budget.food, budget.debt, budget.subscription, budget.savings ],
+        hoverOffset: 4
+      }]
+    };
+  
+    const config = {
+      type: 'pie',
+      data: data,
+      options: {
+        plugins: {
+            legend: {
+                display: true,
+                labels: {
+                    color: '#fff'
+      }
+    }}}};
+  </script>
+  <script>
+    const myChart = new Chart(
+      document.getElementById('myChart'),
+      config
+    );
+  </script>
+
+
+
+<%- include('partials/footer') -%>
