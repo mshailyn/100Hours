@@ -7,8 +7,8 @@ router.get('/:date', ensureAuth, budgetController.getBudget)
 
 router.post('/createBudget', budgetController.createBudget)
 
-router.put('/updateBudget', budgetController.updateBudget)
+router.put('/updateBudget/:id', budgetController.updateBudget)
 
-router.delete('/deleteBudget', budgetController.deleteBudget)
+router.delete('/deleteBudget/:id', budgetController.deleteBudget)
 
 module.exports = router

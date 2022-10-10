@@ -1,8 +1,84 @@
 <%- include('partials/header') -%>
 
-<div class="grid grid-cols-4 gap-2 ml-5 mt-10 mb-10">
+<div class="flex flex-col items-center lg:grid lg:grid-cols-2 lg:auto-rows-auto lg:flex-none lg:grid-cols-4 lg:gap-1 lg:ml-5 mt-10">
+
+  <!-- Calendar -->
+  <div class="col-span-2 col-start-2 flex flex-col items-center justify-between my-5">
+        <div  class='flex flex-col items-center bg-white justify-start md:justify-center rounded-lg mx-0 py-4 px-2'>
+          <h2 class="text-xl self-center font-bold w-full text-neutral"> <%= moment().format('MMMM YYYY'); %></h2> 
+          <div class="flex">
+          <div class='flex group hover:bg-secondary hover:shadow-lg hover-light-shadow rounded-lg mx-1 transition-all	duration-300	 cursor-pointer justify-center w-16'>
+              <div class='flex items-center px-4 py-4'>
+                  <div class='text-center'>
+                     <p class='text-gray-900 group-hover:text-darkred text-sm transition-all font-bold	duration-300'> <%= moment().subtract(3, 'days').format('ddd') %> </p>
+                     <p class='text-gray-900 group-hover:text-darkred mt-3 group-hover:font-bold transition-all	duration-300'> <%= moment().subtract(3, 'days').format('DD') %> </p>
+                  </div>
+              </div>
+          </div>
+        
+          <div class='flex group hover:bg-secondary hover:shadow-lg hover-light-shadow rounded-lg mx-1 transition-all	duration-300	 cursor-pointer justify-center w-16'>
+                <div class='flex items-center px-4 py-4'>
+                    <div class='text-center'>
+                      <p class='text-gray-900 group-hover:text-darkred text-sm transition-all	font-bold duration-300'> <%= moment().subtract(2, 'days').format('ddd') %> </p>
+                      <p class='text-gray-900 group-hover:text-darkred mt-3 group-hover:font-bold transition-all	duration-300'> <%= moment().subtract(2, 'days').format('DD') %> </p>
+                    </div>
+                </div>
+          </div>
+        
+          <div class='flex group hover:bg-secondary hover:shadow-lg hover-light-shadow rounded-lg mx-1 transition-all	duration-300	 cursor-pointer justify-center w-16'>
+                  <div class='flex items-center px-4 py-4'>
+                      <div class='text-center'>
+                        <p class='text-gray-900 group-hover:text-darkred text-sm transition-all	font-bold duration-300'><%= moment().subtract(1, 'days').format('ddd') %> </p>
+                        <p class='text-gray-900 group-hover:text-darkred mt-3 group-hover:font-bold transition-all	duration-300'> <%= moment().subtract(1, 'days').format('DD') %></p>
+                      </div>
+                  </div>
+          </div>
+        
+          <div class='flex group bg-secondary-focus shadow-lg light-shadow rounded-lg mx-1 cursor-pointer justify-center relative w-16 content-center'>
+            <span class="flex h-3 w-3 absolute -top-1 -right-1">
+              <span class="animate-ping absolute group-hover:opacity-75 opacity-0 inline-flex h-full w-full rounded-full bg-pink "></span>
+              <span class="relative inline-flex rounded-full h-3 w-3 bg-pink"></span>
+            </span>
+              <div class='flex items-center px-4 py-4'>
+                  <div class='text-center'>
+                     <p class='text-white text-sm'> <%= moment().format('ddd') %>  </p>
+                     <p class='text-white  mt-3 font-bold'> <%=moment().format('DD') %> </p>
+                  </div>
+              </div>
+          </div>
+        
+          <div class='flex group hover:bg-secondary hover:shadow-lg hover-light-shadow rounded-lg mx-1 transition-all	duration-300 content-center	 cursor-pointer justify-center w-16'>
+                <div class='flex items-center px-4 py-4'>
+                    <div class='text-center'>
+                      <p class='text-gray-900 group-hover:text-darkred text-sm transition-all font-bold	duration-300'> <%= moment().add(1, 'days').format('ddd') %> </p>
+                      <p class='text-gray-900 group-hover:text-darkred mt-3 group-hover:font-bold transition-all	duration-300'> <%= moment().add(1, 'days').format('DD') %> </p>
+                    </div>
+                </div>
+          </div>
+        
+          <div class='flex group hover:bg-secondary hover:shadow-lg hover-light-shadow rounded-lg mx-1 transition-all	duration-300	 cursor-pointer justify-center w-16'>
+                <div class='flex items-center px-4 py-4'>
+                    <div class='text-center'>
+                      <p class='text-gray-900 group-hover:darkred text-sm transition-all font-bold	duration-300'> <%= moment().add(2, 'days').format('ddd') %> </p>
+                      <p class='text-gray-900 group-hover:text-darkred mt-3 group-hover:font-bold transition-all	duration-300'> <%= moment().add(2, 'days').format('DD') %> </p>
+                    </div>
+                </div>
+          </div>
+          
+          <div class='flex group hover:bg-secondary hover:shadow-lg hover-light-shadow rounded-lg mx-1 transition-all	duration-300	 cursor-pointer justify-center w-16'>
+                <div class='flex items-center px-4 py-4'>
+                    <div class='text-center'>
+                      <p class='text-gray-900 group-hover:text-darkred text-sm transition-all font-bold	duration-300'> <%= moment().add(3, 'days').format('ddd') %> </p>
+                      <p class='text-gray-900 group-hover:text-darkred mt-3 group-hover:font-bold transition-all	duration-300'> <%= moment().add(3, 'days').format('DD') %> </p>
+                    </div>
+                </div>
+          </div>
+      </div>
+      </div>
+    </div>
+
 <!-- To-Do List for Today -->
-  <div class="card w-72 bg-secondary text-secondary-content shadow-xl">
+  <div class="card w-72 lg:w-64 xl:w-72 row-start-1 col-start-1 row-span-2 lg:flex xl:ml-10 lg:mt-16 bg-secondary text-secondary-content shadow-xl">
     <div class="flex flex-column justify-center card-body items-center text-center">
       <h2 class="card-title">To-Dos</h2>
       <h3> You have <%= todoToday.length %> 
@@ -22,11 +98,14 @@
         <ul>
             <% todoToday.forEach( el => { %>
                     <li class='todoItem' data-id='<%=el._id%>'>
-                        <span class='font-bold <%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+                        <span class='font-bold <%= el.completed === true ? 'completed line-through text-base-content' : 'not'%>'><%= el.todo %></span>
                         <span>due on <%= moment(el.date).format("MMM Do") %></span>
                         <span>@ <%= moment(el.time, "HH:mm:ss").format("h:mm A") %></span>
-                        <button class="fa-solid fa-trash-can del hover:text-base-100"></button>
-                        <button class="fa-regular fa-pen-to-square update hover:text-base-100"></button>
+                        <a href="/editTodo/<%= el._id %>" class="fa-regular fa-pen-to-square update hover:text-base-100"></a>
+                        <form action="/todos/deleteTodo/<%= el._id %>?_method=DELETE"
+                          method="POST">
+                          <button type="submit" class="fa-solid fa-trash-can del hover:text-base-100"></button>
+                        </form>
                     </li>
             <% }) %>    
          </ul>
@@ -34,11 +113,14 @@
          <ul>
           <% overdue.forEach( el => { %>
             <li class='todoItem text-primary-content' data-id='<%=el._id%>'>
-                <span class='font-bold <%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+                <span class='font-bold <%= el.completed === true ? 'completed line-through text-base-content' : 'not'%>'><%= el.todo %></span>
                 <span>due on <%= moment(el.date).format("MMM Do") %></span>
                 <span>@ <%= moment(el.time, "HH:mm:ss").format("h:mm A") %></span>
-                <button class="fa-solid fa-trash-can del hover:text-base-100"></button>
-                <button class="fa-regular fa-pen-to-square update hover:text-base-100"></button>
+                <a href="/editTodo/<%= el._id %>" class="fa-regular fa-pen-to-square update hover:text-base-100"></a>
+                <form action="/todos/deleteTodo/<%= el._id %>?_method=DELETE"
+                  method="POST">
+                  <button type="submit" class="fa-solid fa-trash-can del hover:text-base-100"></button>
+                </form>
             </li>
     <% }) %> 
          </ul>
@@ -48,84 +130,12 @@
     </div>
   </div>
 
-<!-- Center Section -->
-  <div class="col-span-2 flex flex-col items-center justify-between">
 
-<!-- Calendar -->
-    <div  class='flex flex-col items-center bg-white justify-start md:justify-center rounded-lg mx-auto py-4 px-2  md:mx-12'>
-      <h2 class="text-xl self-center font-bold w-full text-neutral"> <%= moment().format('MMMM YYYY'); %></h2> 
-      <div class="flex">
-      <div class='flex group hover:bg-secondary hover:shadow-lg hover-light-shadow rounded-lg mx-1 transition-all	duration-300	 cursor-pointer justify-center w-16'>
-          <div class='flex items-center px-4 py-4'>
-              <div class='text-center'>
-                 <p class='text-gray-900 group-hover:text-darkred text-sm transition-all font-bold	duration-300'> <%= moment().subtract(3, 'days').format('ddd') %> </p>
-                 <p class='text-gray-900 group-hover:text-darkred mt-3 group-hover:font-bold transition-all	duration-300'> <%= moment().subtract(3, 'days').format('DD') %> </p>
-              </div>
-          </div>
-      </div>
-    
-      <div class='flex group hover:bg-secondary hover:shadow-lg hover-light-shadow rounded-lg mx-1 transition-all	duration-300	 cursor-pointer justify-center w-16'>
-            <div class='flex items-center px-4 py-4'>
-                <div class='text-center'>
-                  <p class='text-gray-900 group-hover:text-darkred text-sm transition-all	font-bold duration-300'> <%= moment().subtract(2, 'days').format('ddd') %> </p>
-                  <p class='text-gray-900 group-hover:text-darkred mt-3 group-hover:font-bold transition-all	duration-300'> <%= moment().subtract(2, 'days').format('DD') %> </p>
-                </div>
-            </div>
-      </div>
-    
-      <div class='flex group hover:bg-secondary hover:shadow-lg hover-light-shadow rounded-lg mx-1 transition-all	duration-300	 cursor-pointer justify-center w-16'>
-              <div class='flex items-center px-4 py-4'>
-                  <div class='text-center'>
-                    <p class='text-gray-900 group-hover:text-darkred text-sm transition-all	font-bold duration-300'><%= moment().subtract(1, 'days').format('ddd') %> </p>
-                    <p class='text-gray-900 group-hover:text-darkred mt-3 group-hover:font-bold transition-all	duration-300'> <%= moment().subtract(1, 'days').format('DD') %></p>
-                  </div>
-              </div>
-      </div>
-    
-      <div class='flex group bg-secondary-focus shadow-lg light-shadow rounded-lg mx-1 cursor-pointer justify-center relative w-16 content-center'>
-        <span class="flex h-3 w-3 absolute -top-1 -right-1">
-          <span class="animate-ping absolute group-hover:opacity-75 opacity-0 inline-flex h-full w-full rounded-full bg-pink "></span>
-          <span class="relative inline-flex rounded-full h-3 w-3 bg-pink"></span>
-        </span>
-          <div class='flex items-center px-4 py-4'>
-              <div class='text-center'>
-                 <p class='text-white text-sm'> <%= moment().format('ddd') %>  </p>
-                 <p class='text-white  mt-3 font-bold'> <%=moment().format('DD') %> </p>
-              </div>
-          </div>
-      </div>
-    
-      <div class='flex group hover:bg-secondary hover:shadow-lg hover-light-shadow rounded-lg mx-1 transition-all	duration-300 content-center	 cursor-pointer justify-center w-16'>
-            <div class='flex items-center px-4 py-4'>
-                <div class='text-center'>
-                  <p class='text-gray-900 group-hover:text-darkred text-sm transition-all font-bold	duration-300'> <%= moment().add(1, 'days').format('ddd') %> </p>
-                  <p class='text-gray-900 group-hover:text-darkred mt-3 group-hover:font-bold transition-all	duration-300'> <%= moment().add(1, 'days').format('DD') %> </p>
-                </div>
-            </div>
-      </div>
-    
-      <div class='flex group hover:bg-secondary hover:shadow-lg hover-light-shadow rounded-lg mx-1 transition-all	duration-300	 cursor-pointer justify-center w-16'>
-            <div class='flex items-center px-4 py-4'>
-                <div class='text-center'>
-                  <p class='text-gray-900 group-hover:darkred text-sm transition-all font-bold	duration-300'> <%= moment().add(2, 'days').format('ddd') %> </p>
-                  <p class='text-gray-900 group-hover:text-darkred mt-3 group-hover:font-bold transition-all	duration-300'> <%= moment().add(2, 'days').format('DD') %> </p>
-                </div>
-            </div>
-      </div>
-      
-      <div class='flex group hover:bg-secondary hover:shadow-lg hover-light-shadow rounded-lg mx-1 transition-all	duration-300	 cursor-pointer justify-center w-16'>
-            <div class='flex items-center px-4 py-4'>
-                <div class='text-center'>
-                  <p class='text-gray-900 group-hover:text-darkred text-sm transition-all font-bold	duration-300'> <%= moment().add(3, 'days').format('ddd') %> </p>
-                  <p class='text-gray-900 group-hover:text-darkred mt-3 group-hover:font-bold transition-all	duration-300'> <%= moment().add(3, 'days').format('DD') %> </p>
-                </div>
-            </div>
-      </div>
-  </div>
-  </div>
+<!-- Center Section -->
+  <div class="col-span-2 row-span-2 col-start-2 row-start-2 flex flex-col items-center justify-between">
 
 <!-- Inspirational Quotes -->
-  <div class="card w-96 bg-base-200 shadow-xl"> 
+  <div class="card w-96 bg-base-200 shadow-xl my-5 lg:my-0 col-span-2 col-start-2 row-start-2 flex flex-col items-center justify-start"> 
     <div class="card-body items-center text-center">
       <h2 class="card-title text-primary-content" >Quote of the Day</h2>
       <p class="text-primary-focus" > <%= quote[0].q %> </p>
@@ -133,11 +143,28 @@
     </div>
   </div>
 
-</div>
+
+<!-- Budget Section -->
+  <div class="card w-96 bg-primary text-primary-content shadow-xl my-5">
+    <div class="flex flex-column justify-center card-body items-center text-center">
+    <% if(!moneyLeft){ %>
+      <h2 class="card-title">You have not made a budget for this month. Click below to get started.</h2>
+      <div class="card-actions mt-8">
+        <a class="btn btn-primary" href="/makeBudget">Make Budget</a>
+      </div>
+    <% }else{ %>
+      <h2 class="card-title">You have $<%= moneyLeft %> left from your budget for this month.</h2>
+      <div class="card-actions mt-8">
+        <a class="btn btn-accent" href="/budget/<%=moment().format("YYYY-MM") %>">View Budget Breakdown</a>
+      </div>
+    <% } %>
+    </div>
+  </div>
+  </div>
 
   
 <!-- Add post to Moodboard -->
-  <div class="card w-72 bg-neutral text-neutral-content shadow-xl">
+  <div class="card w-72 bg-neutral text-neutral-content shadow-xl my-5 row-start-1 row-span-2 lg:mt-20 lg:col-start-4 lg:my-0">
     <div class="flex flex-column justify-center card-body items-center text-center">
       <h2 class="card-title font-bold">Add a Post to your Moodboard</h2>
       <form action="/post/createPost" enctype="multipart/form-data" method="POST" class="flex flex-col items-center">
@@ -161,12 +188,12 @@
 
 <!-- Moodboard -->
 
-<div class="mx-5 mt-10">
+<div class="">
   <div>
-    <h3 class="text-center text-secondary-content text-2xl py-15 font-bold">Moodboard</h3>
-    <ul class="grid grid-cols-4 m-10">
+    <h3 class="text-center items text-secondary-content text-2xl py-15 font-bold">Moodboard</h3>
+    <ul class=" flex flex-col items-center md:flex-row md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 m-10">
       <% for(var i=0; i<posts.length; i++) {%>
-        <li class="w-60 mb-8 flex items-center">
+        <li class="w-60 mb-8 flex items-center justify-self-center">
           <a href="/post/<%= posts[i]._id%>">
             <img src="<%= posts[i].image%>">
           </a>
@@ -180,4 +207,5 @@
 </div>  
     
 <script src="js/main.js"></script>
+
 <%- include('partials/footer') -%>

@@ -1,6 +1,7 @@
 const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
-const Todo = require('../models/Todo')
+const Todo = require('../models/Todo');
+const Budget = require('../models/Budget');
 const moment = require('moment');
 
 
@@ -14,7 +15,9 @@ module.exports = {
       const overdue = await Todo.find({ userId:req.user.id, date: { $lte: moment().subtract(1, 'days').format("YYYY-MM-DD") } })
       const response = await fetch(process.env.URL);
       const quotes = await response.json()
-      res.render("dashboard.ejs", { posts: posts, user: req.user, todos: todoItems, left: itemsLeft,todoToday: todoToday, overdue: overdue, moment: moment, quote: quotes });
+      const thisBudget = await Budget.find({userId:req.user.id, date: moment().format("YYYY-MM") })
+      let moneyLeft = thisBudget.length < 1 ? 0 :(thisBudget[0].monthBudget - (thisBudget[0].rent + thisBudget[0].utilities + thisBudget[0].car + thisBudget[0].gas + thisBudget[0].food + thisBudget[0].debt + thisBudget[0].subscription + thisBudget[0].savings) );
+      res.render("dashboard.ejs", { posts: posts, user: req.user, todos: todoItems, left: itemsLeft,todoToday: todoToday, overdue: overdue, moneyLeft: moneyLeft, moment: moment, quote: quotes });
     } catch (err) {
       console.log(err);
     }

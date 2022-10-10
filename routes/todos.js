@@ -11,8 +11,8 @@ router.put('/markComplete', todosController.markComplete)
 
 router.put('/markIncomplete', todosController.markIncomplete)
 
-router.put('/updateTodos', todosController.updateTodo)
+router.put('/updateTodos/:id', todosController.updateTodo)
 
-router.delete('/deleteTodo', todosController.deleteTodo)
+router.delete('/deleteTodo/:id', todosController.deleteTodo)
 
 module.exports = router

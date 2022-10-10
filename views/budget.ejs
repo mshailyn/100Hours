@@ -6,22 +6,45 @@
   <% if(!budget){ %> 
     <div class="card w-96 bg-secondary text-secondary-content shadow-xl p-5 my-10">
       <div class="flex flex-column justify-center card-body items-center text-center">
-        <h2 class="card-title">You have not made a budget for <%= moment(reqDate).format("MMMM YYYY")%>. Click below to build your budget.</h2>
+        <div class="flex justify-between w-full">
+          <div class="justify-start w-10">
+            <a class="fa-solid fa-chevron-left text-2xl w-10 hover:text-base-100" href="/budget/<%=moment(reqDate).subtract(1, 'months').format("YYYY-MM") %>"></a>
+          </div>
+          <div class="justify-end w-10">
+            <a class="fa-solid fa-chevron-right text-2xl w-10 hover:text-base-100" href="/budget/<%=moment(reqDate).add(1, 'months').format("YYYY-MM") %>"></a>
+          </div>
+        </div>
+        <h2 class="self-center card-title">You have not made a budget for <%= moment(reqDate).format("MMMM YYYY")%>. Click below to build your budget.</h2>
         <div class="card-actions mt-8">
           <a class="btn btn-neutral" href="/makeBudget">Make a New Budget</a>
         </div>
       </div>
     </div>
   <% }else { %> 
-    <div class="card w-4/5 md:w-1/2 bg-secondary text-secondary-content shadow-xl p-5 my-10">
+    <div class="card w-4/5 md:w-1/2 h-screen md:h-auto bg-secondary text-secondary-content shadow-xl my-10">
       <div class="flex flex-column justify-center card-body items-center text-center">
-        <h2 class="card-title">Your Budget for <%= moment(budget.date).format("MMMM YYYY")%></h2>
+        <div class="flex justify-between w-full">
+            <div class="justify-start w-10">
+              <a class="fa-solid fa-chevron-left text-2xl w-10 hover:text-base-100" href="/budget/<%=moment(reqDate).subtract(1, 'months').format("YYYY-MM") %>"></a>
+            </div>
+            <div class="justify-end w-10">
+              <a class="fa-solid fa-chevron-right text-2xl w-10 hover:text-base-100" href="/budget/<%=moment(reqDate).add(1, 'months').format("YYYY-MM") %>"></a>
+            </div>
+        </div>
+        <h2 class="self-center card-title">Your Budget for <%= moment(budget.date).format("MMMM YYYY")%></h2>
         <span> You have $<%= left %> left this month from your budget.</span>
         <div class="card-body w-96">
           <canvas id="myChart"></canvas>
         </div>
-        <div class="card-actions mt-8">
+        <div class="flex justify-center card-actions mt-8">
             <a class="btn btn-neutral" href="/makeBudget">Make a New Budget</a>
+            <a class="btn btn-accent" href="/editBudget/<%= reqDate %>">Edit Current Budget</a>
+        </div>
+        <div class=" w-10">
+          <form action="/budget/deleteBudget/<%= budget._id %>?_method=DELETE"
+          method="POST">
+          <button type="submit" class="fa-solid fa-trash-can text-2xl text-secondary-content hover:text-white hover:animate-bounce"></button>
+          </form>
         </div>
       </div>
     </div>

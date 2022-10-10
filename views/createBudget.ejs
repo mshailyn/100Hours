@@ -1,60 +1,58 @@
 <%- include('partials/header') -%>
 
-<main class="flex justify-center h-screen w-screen items-center bg-auto bg-repeat bg-center animate-ltr-linear-infinite" style="background-image: url(/imgs/dandelionBackground2.png)">
-        <div class="card-body shadow-xl flex flex-col items-center justify-center bg-secondary text-secondary-content mx-20">
+<main class="flex justify-center w-screen items-center bg-auto bg-repeat bg-center animate-ltr-linear-infinite" style="background-image: url(/imgs/dandelionBackground2.png)">
+    <div class="card w-4/5 xl:w-1/2 bg-secondary text-secondary-content shadow-xl my-10">
+        <div class="card-body flex flex-col items-center justify-center mx-20">
             <h2 class="card-title text-secondary-focus font-bold" id="create">Your Spending:</h2>
             <form class="flex items-center justify-center flex-wrap" action="/budget/createBudget" method='POST'>
-                <div class="form-control my-5">
-                    <label for="budgetMonth" class="font-bold"> Select Month to Budget:</label>
-                    <input type="month" id="budgetMonth" name ="budgetMonth" class="input input-bordered "> 
+                <div class="justify-self-center flex justify-center w-full">
+                    <div class="form-control my-5 w-full md:w-2/5">
+                        <label for="budgetMonth" class="font-bold"> Select Month to Budget:</label>
+                        <input type="month" id="budgetMonth" name ="budgetMonth" class="input input-bordered"> 
+                    </div>
                 </div>
-                <div class="form-control my-5">
-                    <label for="fullBudget" class="font-bold"> Full Monthly Paycheck:</label>
+                <div class="form-control my-5 px-2 w-full md:w-1/3">
+                    <label for="fullBudget" class="font-bold"> Monthly Paycheck:</label>
                     <input id="fullBudget" type="number" name="fullBudget" value="0" class="input input-bordered w-full max-w-xs h-10">
                 </div>
-                <div class="form-control my-5">
+                <div class="form-control my-5 px-2 w-full md:w-1/3">
                     <label for="rent" class="font-bold"> Rent:</label>
                     <input id="rent" type="number" name="rent" value="0" class="input input-bordered w-full max-w-xs h-10">
                 </div>
-                <div class="form-control my-5">
+                <div class="form-control my-5 px-2 w-full md:w-1/3">
                     <label for="utilities" class="font-bold"> Utilities:</label>
                     <input id="utilities" type="number" name="utilities" value="0" class="input input-bordered w-full max-w-xs h-10">
                 </div>
-                <div class="form-control my-5">
-                    <label for="car" class="font-bold"> Car (payment/insurance):</label>
+                <div class="form-control my-5 px-2 w-full md:w-1/3">
+                    <label for="car" class="font-bold"> Car <span class="text-xs">(payment/insur.):</span></label>
                     <input id="car" type="number" name="car" value="0" class="input input-bordered w-full max-w-xs h-10">
                 </div>
-                <div class="form-control my-5">
+                <div class="form-control my-5 px-2 w-full md:w-1/3">
                     <label for="gas" class="font-bold"> Gas:</label>
                     <input id="gas" type="number" name="gas" value="0" class="input input-bordered w-full max-w-xs h-10">
                 </div>
-                <div class="form-control my-5">
+                <div class="form-control my-5 px-2 w-full md:w-1/3">
                     <label for="food" class="font-bold"> Food:</label>
                     <input id="food" type="number" name="food" value="0" class="input input-bordered w-full max-w-xs h-10">
                 </div>
-                <div class="form-control my-5">
+                <div class="form-control my-5 px-2 w-full md:w-1/3">
                     <label for="debt" class="font-bold"> Debt:</label>
                     <input id="debt" type="number" name="debt" value="0" class="input input-bordered w-full max-w-xs h-10">
                 </div>
-                <div class="form-control my-5">
+                <div class="form-control my-5 px-2 w-full md:w-1/3">
                     <label for="subscription" class="font-bold"> Subscription:</label>
                     <input id="subscription" type="number" name="subscription" value="0" class="input input-bordered w-full max-w-xs h-10">
                 </div>
-                <div class="form-control my-5">
+                <div class="form-control my-5 px-2 w-full md:w-1/3">
                     <label for="savings" class="font-bold"> Savings:</label>
                     <input id="savings" type="number" name="savings" value="0" class="input input-bordered w-full max-w-xs h-10">
                 </div>
-                <div class="form-control my-5">
-                    <label for="miscName" class="font-bold"> Name:</label>
-                    <input id="miscName" type="text" name="miscName" placeholder="Name of Extra Category" class="input input-bordered w-full max-w-xs h-10">
-                    <label for="miscAmount" class="font-bold"> Amount:</label>
-                    <input id="miscAmount" type="number" name="miscAmount" value="0" class="input input-bordered w-full max-w-xs h-10">
-                </div>
                 <div>
-                    <input type="submit" class="submit btn btn-secondary bg-pink round my-5"> 
+                    <input type="submit" class="submit btn btn-secondary bg-darkpink round my-5"> 
                 </div>
             </form>
         </div>
+    </div>
 </main>
 
 

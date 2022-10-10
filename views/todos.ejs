@@ -1,7 +1,7 @@
 <%- include('partials/header') -%>
 
 <main class="flex justify-center h-screen w-screen items-center bg-auto bg-repeat bg-center animate-ltr-linear-infinite" style="background-image: url(/imgs/dandelionBackground2.png)">
-    <div class="card lg:card-side shadow-xl">
+    <div class="card w-3/4 md:w-1/2 lg:w-auto lg:card-side shadow-xl my-10">
         <!-- To-Do List -->
         <figure class="bg-secondary text-secondary-content">
             <div class="card-body items-center text-center">
@@ -11,11 +11,14 @@
                   <ul>
                       <% todos.forEach( el => { %>
                               <li class='todoItem' data-id='<%=el._id%>'>
-                                  <span class='font-bold <%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+                                  <span class='font-bold <%= el.completed === true ? 'completed line-through text-base-content' : 'not'%>'><%= el.todo %></span>
                                   <span>due on <%= moment(el.date).format("MMM Do") %></span>
                                   <span>@ <%= moment(el.time, "HH:mm:ss").format("h:mm A") %></span>
-                                  <button class="del fa-solid fa-trash-can hover:text-base-100"></button>
-                                  <button class="update fa-regular fa-pen-to-square hover:text-base-100"></button>
+                                  <a href="/editTodo/<%= el._id %>" class="fa-regular fa-pen-to-square update hover:text-base-100"></a>
+                                  <form action="/todos/deleteTodo/<%= el._id %>?_method=DELETE"
+                                    method="POST">
+                                        <button type="submit" class="fa-solid fa-trash-can del hover:text-base-100"></button>
+                                  </form>
                               </li>
                       <% }) %>    
                    </ul>

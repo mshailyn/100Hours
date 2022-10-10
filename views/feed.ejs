@@ -1,12 +1,12 @@
 <%- include('partials/header') -%>
 
-  <div class="mx-5">
-    <div class="flex w-screen justify-evenly">
-      <ul class="grid grid-cols-3 gap-7 mx-5 mb-10">
+  <div class="">
+    <div class="flex w-screen justify-center">
+      <ul class="flex items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 mb-10">
         <% for(var i=0; i<posts.length; i++) {%>
           <% if(posts[i].user == user.id){ %>
          <% }else{ %>
-          <li class="w-80 my-3 flex items-center">
+          <li class="w-80 m-5 flex items-center">
             <a href="/post/<%= posts[i]._id%>">
               <img class="img-fluid" src="<%= posts[i].image%>">
             </a>

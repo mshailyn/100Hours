@@ -1,0 +1,21 @@
+<%- include('partials/header') -%>
+
+<main class="flex justify-center h-screen w-screen items-center bg-auto bg-repeat bg-center animate-ltr-linear-infinite" style="background-image: url(/imgs/dandelionBackground2.png)">
+    <div class="card h-3/4 w-4/5 md:w-auto bg-secondary-content text-secondary-focus shadow-xl my-10">
+        <div class="card-body flex flex-col items-center justify-center mx-20">
+            <h2 class="card-title text-secondary font-bold" id="create">Edit your Todo</h2>
+            <form class="flex flex-col items-center justify-center flex-wrap" action="/todos/updateTodos/<%= todo._id %>?_method=PUT" method="POST">
+                <div class="form-control my-5">
+                    <input type="text" value="<%= todo.todo %>" name='todoItem' class="input input-bordered w-full max-w-xs h-10">
+                </div>
+                <div class=" my-5 w-full input-group">
+                    <input type="date" value="<%= todo.date %>" name ='date' class="input input-bordered "> 
+                    <input type="time" value="<%= todo.time %>" name="time" class="input input-bordered ">
+                </div>
+                <input type="submit" class="submit btn btn-secondary bg-pink round my-5"> </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+<%- include('partials/footer') -%>

@@ -43,26 +43,31 @@ module.exports = {
             console.log(err)
         }
     },
-    updateTodo: async(req, res)=>{
-        console.log(req.body.todoIdFromJSFile)
+    getUpdateTodo: async (req,res)=>{
         try{
-            await Todo.findOneAndUpdate({_id:req.body.todoIdFromJSFile}, {
-                $set: {
-                    todo: req.body.newNote,
-                },
-            })
-            console.log('Updated todo')
-            res.json('Updated Todo')
+            const todoItem = await Todo.find({userId:req.user.id, _id: req.params.id})
+            res.render("editTodo.ejs", {todo: todoItem[0], user: req.user, moment: moment })
+            console.log(todoItem)
         }catch(err){
             console.log(err)
         }
     },
+    updateTodo: async(req, res)=>{
+        try {
+            await Todo.findOneAndUpdate({ _id: req.params.id },{
+                $set: { todo: req.body.todoItem, },
+              });
+            console.log("Todo Updated");
+            res.redirect("/todos");
+          } catch (err) {
+            console.log(err);
+          }
+     },
     deleteTodo: async (req, res)=>{
-        console.log(req.body.todoIdFromJSFile)
         try{
-            await Todo.findOneAndDelete({_id:req.body.todoIdFromJSFile})
+            await Todo.findOneAndDelete({_id:req.params.id})
             console.log('Deleted Todo')
-            res.json('Deleted It')
+            res.redirect("/todos");
         }catch(err){
             console.log(err)
         }
