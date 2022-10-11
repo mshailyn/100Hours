@@ -1,9 +1,9 @@
 # Dandelion
 Dandelion is a full-stack application that allows users to make an account and helped imagine their life in a new way through it's organizational features. Dandelion allows users to craft their own moodboard and view other's posts on its feed and save their posts to their own board. Users can manage their to-do lists. All users also receive a motivational quote to help get their day started on a high note.
 
-<!-- **Link to project:** https://www.shailynmoore.com/ -->
+**Link to project:** https://dandelion-life.herokuapp.com/
 
-![Picture of Site](/public/imgs/100hoursproject.gif?raw=true "Dandelion Organization Application")
+<h2 align="center"> <img src="/public/imgs/100hoursproject.gif" alt="Gif of Site"></h2>
 
 ## How It's Made:
 
@@ -13,7 +13,7 @@ I used EJS to apply my HTML and Tailwind for the CSS to on the front-end. I used
 
 ## Optimizations
 
-There is one feature still in the works and that is a budgeting feature. This will allow users to input their financial spending and see wherer they spend the most and how much they have left each month.  
+Some optimizations to consider in the future include adding a subtask feature, and allowing for user to view other users profile and their specific mood boards.
 
 ## Lessons Learned:
 
@@ -24,6 +24,6 @@ Take a look at these couple of projects I've worked on:
 
 **To-Do List Full-Stack Application:** https://github.com/mshailyn/todo-list
 
-**Avatar the Last Airbender Databse:** https://github.com/mshailyn/ATLA
+**Binary Upload Boom Full-Stack Social Media App:** https://github.com/mshailyn/social-media-app
 
 **My Portfolio Repo** https://github.com/mshailyn/My-Portfolio
