@@ -1,15 +1,20 @@
 <%- include('partials/header') -%>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<main class="flex flex-col justify-around w-screen h-screen items-center bg-auto bg-repeat bg-center animate-ltr-linear-infinite" style="background-image: url(/imgs/dandelionBackground2.png)">
+<main class="flex flex-col justify-around w-screen h-fit items-center bg-auto bg-repeat bg-center animate-ltr-linear-infinite" style="background-image: url(/imgs/dandelionBackground2.png)">
 
   <% if(!budget){ %> 
-    <div class="card w-96 bg-secondary text-secondary-content shadow-xl p-5 my-10">
+    <div class="card w-full md:w-3/5 lg:w-2/5 bg-secondary text-secondary-content shadow-xl p-5 my-10">
       <div class="flex flex-column justify-center card-body items-center text-center">
-        <div class="flex justify-between w-full">
+        <div class="flex justify-between w-full mb-5">
           <div class="justify-start w-10">
             <a class="fa-solid fa-chevron-left text-2xl w-10 hover:text-base-100" href="/budget/<%=moment(reqDate).subtract(1, 'months').format("YYYY-MM") %>"></a>
           </div>
+          <form class="flex flex-col w-3/5 items-center lg:flex-row justify-center lg:items-start pb-5" action="/budget/:date?_method=GET"
+          method="POST">
+            <input type="month" id="month" name ="month" class="w-2/5 sm:w-4/5 input input-bordered"> 
+            <input type="submit" class="submit btn btn-secondary bg-darkpink round m-0"> 
+        </form>
           <div class="justify-end w-10">
             <a class="fa-solid fa-chevron-right text-2xl w-10 hover:text-base-100" href="/budget/<%=moment(reqDate).add(1, 'months').format("YYYY-MM") %>"></a>
           </div>
@@ -21,12 +26,18 @@
       </div>
     </div>
   <% }else { %> 
-    <div class="card w-4/5 md:w-1/2 h-screen md:h-auto bg-secondary text-secondary-content shadow-xl my-10">
+    <div class="card w-4/5 md:w-1/2 h-fit bg-secondary text-secondary-content shadow-xl my-10">
       <div class="flex flex-column justify-center card-body items-center text-center">
-        <div class="flex justify-between w-full">
+        <div class="flex justify-between w-full mb-5">
             <div class="justify-start w-10">
               <a class="fa-solid fa-chevron-left text-2xl w-10 hover:text-base-100" href="/budget/<%=moment(reqDate).subtract(1, 'months').format("YYYY-MM") %>"></a>
             </div>
+            <form class="flex flex-col items-center lg:flex-row justify-center lg:items-start pb-5" action="/budget/:date?_method=GET"
+              method="POST">
+                <input type="month" id="month" name ="month" class="w-4/5 input input-bordered"> 
+                <input type="submit" class="submit btn btn-secondary bg-darkpink round my-0"> 
+          
+            </form>
             <div class="justify-end w-10">
               <a class="fa-solid fa-chevron-right text-2xl w-10 hover:text-base-100" href="/budget/<%=moment(reqDate).add(1, 'months').format("YYYY-MM") %>"></a>
             </div>
@@ -43,7 +54,7 @@
         <div class=" w-10">
           <form action="/budget/deleteBudget/<%= budget._id %>?_method=DELETE"
           method="POST">
-          <button type="submit" class="fa-solid fa-trash-can text-2xl text-secondary-content hover:text-white hover:animate-bounce"></button>
+          <button type="submit" class="mb-2 fa-solid fa-trash-can text-2xl text-secondary-content hover:text-white hover:animate-bounce"></button>
           </form>
         </div>
       </div>
