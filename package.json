@@ -1,7 +1,7 @@
 {
-  "name": "binary-upload-boom",
+  "name": "dandelion",
   "version": "1.0.0",
-  "description": "100Devs Social Network",
+  "description": "Organizational App",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
