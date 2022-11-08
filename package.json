@@ -4,7 +4,8 @@
   "description": "Organizational App",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node fileName.js",
+    "dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
